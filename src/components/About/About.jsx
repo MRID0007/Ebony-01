@@ -10,7 +10,8 @@ const About = () => {
             <div className="aspect-[3/4] overflow-hidden">
               <img
                 src={aboutImage}
-                alt="About"
+                alt="Ebony March - Professional Fashion Model Portrait"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
