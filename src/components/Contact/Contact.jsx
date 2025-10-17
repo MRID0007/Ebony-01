@@ -1,8 +1,35 @@
+import { useState } from 'react';
+
 const Contact = () => {
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add form submission logic here
-    alert('Thank you for your message! I will get back to you soon.');
+    setIsSubmitting(true);
+    setStatus('');
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        e.target.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -63,9 +90,17 @@ const Contact = () => {
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
+            <input type="hidden" name="access_key" value="7df5f1ba-edea-4dab-af1c-7e1e67012ab9" />
+            <input type="hidden" name="subject" value="New Contact Form Submission from ebonyash.fashion" />
+            <input type="hidden" name="from_name" value="Ebony March Portfolio" />
+
+            {/* Honeypot spam protection */}
+            <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />
+
             <div>
               <input
                 type="text"
+                name="name"
                 placeholder="Name"
                 required
                 className="w-full px-4 py-3 bg-white/5 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors"
@@ -74,6 +109,7 @@ const Contact = () => {
             <div>
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 required
                 className="w-full px-4 py-3 bg-white/5 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors"
@@ -81,17 +117,34 @@ const Contact = () => {
             </div>
             <div>
               <textarea
+                name="message"
                 placeholder="Message"
                 required
                 rows="6"
                 className="w-full px-4 py-3 bg-white/5 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors resize-none"
               ></textarea>
             </div>
+
+            {/* Success Message */}
+            {status === 'success' && (
+              <div className="p-4 bg-green-500/10 border border-green-500 text-green-500 text-center">
+                Thank you for your message! I will get back to you soon.
+              </div>
+            )}
+
+            {/* Error Message */}
+            {status === 'error' && (
+              <div className="p-4 bg-red-500/10 border border-red-500 text-red-500 text-center">
+                Something went wrong. Please try again or email me directly.
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full px-8 py-3 bg-white text-black font-light tracking-wider hover:bg-gray-200 transition-colors duration-300"
+              disabled={isSubmitting}
+              className="w-full px-8 py-3 bg-white text-black font-light tracking-wider hover:bg-gray-200 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              SEND MESSAGE
+              {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
             </button>
           </form>
         </div>
