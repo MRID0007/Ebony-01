@@ -1,28 +1,15 @@
-import { useState } from 'react';
-import Navigation from './components/Navigation/Navigation';
-import Hero from './components/Hero/Hero';
-import Gallery from './components/Gallery/Gallery';
-import About from './components/About/About';
-import Testimonials from './components/Testimonials/Testimonials';
-import CompCard from './components/CompCard/CompCard';
-import Contact from './components/Contact/Contact';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import CompCardPage from './components/CompCardPage/CompCardPage';
 
 function App() {
-  const [showCompCard, setShowCompCard] = useState(false);
-
   return (
-    <div className="app">
-      <Navigation />
-      <Hero />
-      <Gallery />
-      <About />
-      <Testimonials />
-      <CompCard onOpenCompCard={() => setShowCompCard(true)} />
-      <Contact />
-
-      {showCompCard && <CompCardPage onClose={() => setShowCompCard(false)} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/comp-card" element={<CompCardPage />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,18 +1,21 @@
+import { useNavigate } from 'react-router-dom';
 import P09 from '../../assets/P-09.jpg';
 import P08 from '../../assets/P-08.jpg';
 import P01 from '../../assets/P-01.jpg';
 import './CompCardPage.css';
 
-const CompCardPage = ({ onClose }) => {
+const CompCardPage = () => {
+  const navigate = useNavigate();
+
   const handleDownload = () => {
     window.print();
   };
 
   return (
-    <div className="comp-card-overlay">
+    <div className="comp-card-page">
       <div className="comp-card-controls no-print">
-        <button onClick={onClose} className="close-btn">
-          ✕ Close
+        <button onClick={() => navigate('/')} className="close-btn">
+          ← Back to Portfolio
         </button>
         <button onClick={handleDownload} className="download-btn">
           📄 Download PDF

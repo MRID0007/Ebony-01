@@ -1,69 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found | Ebony March</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #000;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .container {
-      text-align: center;
-      max-width: 600px;
-    }
-    h1 {
-      font-size: 120px;
-      font-weight: 200;
-      letter-spacing: 10px;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: 32px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      margin-bottom: 30px;
-    }
-    p {
-      font-size: 18px;
-      font-weight: 300;
-      color: #999;
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-    a {
-      display: inline-block;
-      padding: 15px 40px;
-      background: #fff;
-      color: #000;
-      text-decoration: none;
-      font-weight: 300;
-      letter-spacing: 2px;
-      transition: background 0.3s;
-    }
-    a:hover {
-      background: #ccc;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>404</h1>
-    <h2>PAGE NOT FOUND</h2>
-    <p>The page you're looking for doesn't exist or has been moved.</p>
-    <a href="/">BACK TO HOME</a>
-  </div>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ebony March Portfolio</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
