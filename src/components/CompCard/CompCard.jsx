@@ -9,12 +9,15 @@ const CompCard = () => {
           Download my professional composite card for casting and booking reference
         </p>
         <a
-          href="/comp-card.pdf"
-          download
+          href="/comp-card.html"
+          target="_blank"
           className="inline-block px-8 py-3 bg-black text-white font-light tracking-wider hover:bg-gray-800 transition-colors duration-300"
         >
-          DOWNLOAD COMP CARD (PDF)
+          VIEW COMP CARD
         </a>
+        <p className="text-sm text-gray-500 mt-4">
+          Open the comp card and use your browser's "Print to PDF" function to save
+        </p>
       </div>
     </section>
   );
