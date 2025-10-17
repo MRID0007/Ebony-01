@@ -66,29 +66,32 @@
 
 /* Left side - Photos */
 .comp-card-left {
-  width: 50%;
+  flex: 0 0 auto;
   background: #000;
   display: flex;
 }
 
 .comp-photos {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 1fr;
-  width: 100%;
-  height: 100%;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   gap: 1px;
+  background: #000;
 }
 
 .comp-photo {
-  background: #f0f0f0;
+  background: #000;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .comp-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;
+  max-height: 100%;
+  width: auto;
+  height: auto;
 }
 
 .comp-photo-main {
@@ -97,7 +100,7 @@
 
 /* Right side - Info */
 .comp-card-right {
-  width: 50%;
+  flex: 1;
   background: white;
   display: flex;
   flex-direction: column;
@@ -178,6 +181,13 @@
     margin: 0;
   }
 
+  /* Force print backgrounds */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
   /* Hide everything except the comp card */
   body * {
     visibility: hidden;
@@ -189,7 +199,7 @@
   }
 
   html, body {
-    background: white !important;
+    background: black !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
@@ -199,7 +209,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    background: white;
+    background: black !important;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -231,8 +241,21 @@
     overflow: hidden;
   }
 
+  .comp-card-left {
+    background: black !important;
+  }
+
+  .comp-photos {
+    background: black !important;
+  }
+
+  .comp-photo {
+    background: black !important;
+  }
+
   .comp-header {
     padding: 20px;
+    background: black !important;
   }
 
   .comp-header h1 {
@@ -260,6 +283,7 @@
 
   .comp-contact {
     padding: 15px;
+    background: black !important;
   }
 
   .comp-contact-item {
