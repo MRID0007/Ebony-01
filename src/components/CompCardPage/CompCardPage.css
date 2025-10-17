@@ -221,13 +221,13 @@
   }
 
   .comp-header {
-    padding: 15px;
+    padding: 18px 20px;
   }
 
   .comp-header h1 {
-    font-size: 24px;
+    font-size: 26px;
     letter-spacing: 5px;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
 
   .comp-tagline {
@@ -235,32 +235,34 @@
   }
 
   .comp-photo-large {
-    max-height: 1.5in;
+    aspect-ratio: 16/9;
+    height: auto;
   }
 
   .comp-photo {
-    max-height: 1.8in;
+    aspect-ratio: 3/4;
+    height: auto;
   }
 
   .comp-stats {
-    padding: 12px 15px;
+    padding: 15px 25px;
   }
 
   .comp-stats-grid {
-    gap: 6px 15px;
+    gap: 8px 20px;
   }
 
   .comp-stat {
-    font-size: 8px;
-    padding-bottom: 4px;
+    font-size: 9px;
+    padding-bottom: 3px;
   }
 
   .comp-contact {
-    padding: 10px 15px;
+    padding: 12px 20px;
   }
 
   .comp-contact-item {
-    font-size: 8px;
-    margin: 2px 0;
+    font-size: 9px;
+    margin: 3px 0;
   }
 }
