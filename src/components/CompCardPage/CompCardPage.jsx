@@ -28,13 +28,13 @@ const CompCardPage = ({ onClose }) => {
 
           <div className="comp-photos">
             <div className="comp-photo comp-photo-large">
-              <img src={P09} alt="Ebony March Portfolio" />
+              <img src={P01} alt="Ebony March Portfolio" />
+            </div>
+            <div className="comp-photo">
+              <img src={P09} alt="Ebony March" />
             </div>
             <div className="comp-photo">
               <img src={P08} alt="Ebony March" />
-            </div>
-            <div className="comp-photo">
-              <img src={P01} alt="Ebony March" />
             </div>
           </div>
 

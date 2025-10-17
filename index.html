@@ -6,6 +6,12 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
+
+    <!-- Prevent FOUC (Flash of Unstyled Content) -->
+    <style>
+      #root { visibility: hidden; }
+      #root.loaded { visibility: visible; }
+    </style>
     <meta name="description" content="Ebony March - Professional fashion and editorial model based in Australia. Explore my portfolio featuring high fashion shoots, commercial campaigns, and editorial work. Available for bookings worldwide." />
     <meta name="author" content="Ebony March" />
     <meta name="keywords" content="fashion model, editorial model, portfolio, modeling, Ebony March" />
