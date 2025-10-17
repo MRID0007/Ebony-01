@@ -67,19 +67,19 @@
 .comp-header {
   background: #000;
   color: white;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
 }
 
 .comp-header h1 {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 300;
   letter-spacing: 6px;
   margin-bottom: 8px;
 }
 
 .comp-tagline {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 300;
   letter-spacing: 2px;
   opacity: 0.9;
@@ -97,7 +97,6 @@
   background: #f0f0f0;
   aspect-ratio: 3/4;
   overflow: hidden;
-  max-height: 2in;
 }
 
 .comp-photo img {
@@ -109,27 +108,26 @@
 .comp-photo-large {
   grid-column: 1 / -1;
   aspect-ratio: 16/9;
-  max-height: 1.8in;
 }
 
 /* Stats */
 .comp-stats {
-  padding: 15px 20px;
+  padding: 30px 40px;
   background: white;
 }
 
 .comp-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 20px;
+  gap: 15px 30px;
 }
 
 .comp-stat {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   border-bottom: 1px solid #e0e0e0;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .comp-stat-label {
@@ -147,14 +145,14 @@
 .comp-contact {
   background: #000;
   color: white;
-  padding: 12px 20px;
+  padding: 20px;
   text-align: center;
 }
 
 .comp-contact-item {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.5px;
-  margin: 3px 0;
+  margin: 5px 0;
 }
 
 /* Print styles */
