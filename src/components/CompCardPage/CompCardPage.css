@@ -162,12 +162,24 @@
     margin: 0;
   }
 
+  /* Hide everything except the comp card */
+  body * {
+    visibility: hidden;
+  }
+
+  .comp-card-overlay,
+  .comp-card-overlay * {
+    visibility: visible;
+  }
+
   body {
     background: white !important;
   }
 
   .comp-card-overlay {
-    position: static;
+    position: absolute;
+    left: 0;
+    top: 0;
     background: white;
     padding: 0;
     overflow: visible;
@@ -179,10 +191,19 @@
 
   .comp-card-container {
     min-height: auto;
+    padding: 0;
   }
 
   .comp-card {
     box-shadow: none;
     page-break-after: avoid;
+    page-break-inside: avoid;
+    width: 5.5in;
+    height: auto;
+  }
+
+  /* Ensure photos don't break across pages */
+  .comp-photo {
+    page-break-inside: avoid;
   }
 }
