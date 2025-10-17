@@ -72,16 +72,17 @@
 }
 
 .comp-photos {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
   width: 100%;
-  gap: 0;
+  height: 100%;
+  gap: 1px;
 }
 
 .comp-photo {
   background: #f0f0f0;
   overflow: hidden;
-  flex: 1;
 }
 
 .comp-photo img {
@@ -91,7 +92,7 @@
 }
 
 .comp-photo-main {
-  flex: 2;
+  grid-column: 1 / -1;
 }
 
 /* Right side - Info */
