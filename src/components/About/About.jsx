@@ -20,18 +20,25 @@ const About = () => {
           {/* Content */}
           <div className="order-1 lg:order-2 space-y-6">
             <h2 className="text-4xl md:text-5xl font-light text-black tracking-widest">
-              ABOUT ME
+              ABOUT EBONY - PROFESSIONAL MODEL
             </h2>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
                 I'm a professional fashion and editorial model with a passion for bringing
-                creative visions to life. With years of experience in the industry, I've had
-                the privilege of working with talented photographers, designers, and brands.
+                creative visions to life. With years of experience in the modeling industry, I've had
+                the privilege of working with talented photographers, designers, and brands across
+                Australia and internationally.
               </p>
               <p>
                 My approach to modeling is rooted in versatility and professionalism. Whether
-                it's high fashion, commercial work, or editorial shoots, I bring dedication
-                and authenticity to every project.
+                it's high fashion runway shows, commercial brand campaigns, or editorial photo shoots,
+                I bring dedication, creativity, and authenticity to every project. I specialize in
+                bringing the designer's vision to life while adding my own unique energy to each shot.
+              </p>
+              <p>
+                Based in Australia, I'm available for fashion modeling assignments, editorial work,
+                commercial campaigns, and creative collaborations worldwide. My experience spans
+                runway modeling, print campaigns, digital content creation, and brand partnerships.
               </p>
             </div>
 
