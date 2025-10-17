@@ -1,12 +1,16 @@
 /* Page styles */
 .comp-card-page {
   min-height: 100vh;
-  background: #f5f5f5;
+  background: #000;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .comp-card-controls {
-  max-width: 5.5in;
+  max-width: 8.5in;
+  width: 100%;
   margin: 0 auto 20px;
   display: flex;
   justify-content: space-between;
@@ -47,50 +51,37 @@
 .comp-card-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: calc(100vh - 80px);
+  align-items: center;
+  flex: 1;
 }
 
 .comp-card {
-  width: 5.5in;
+  width: 8.5in;
+  height: 5.5in;
   background: white;
   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
 }
 
-/* Header */
-.comp-header {
+/* Left side - Photos */
+.comp-card-left {
+  width: 50%;
   background: #000;
-  color: white;
-  padding: 30px;
-  text-align: center;
+  display: flex;
 }
 
-.comp-header h1 {
-  font-size: 36px;
-  font-weight: 300;
-  letter-spacing: 6px;
-  margin-bottom: 8px;
-}
-
-.comp-tagline {
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  opacity: 0.9;
-}
-
-/* Photos */
 .comp-photos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: #000;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
 }
 
 .comp-photo {
   background: #f0f0f0;
-  aspect-ratio: 3/4;
   overflow: hidden;
+  flex: 1;
 }
 
 .comp-photo img {
@@ -99,21 +90,51 @@
   object-fit: cover;
 }
 
-.comp-photo-large {
-  grid-column: 1 / -1;
-  aspect-ratio: 16/9;
+.comp-photo-main {
+  flex: 2;
+}
+
+/* Right side - Info */
+.comp-card-right {
+  width: 50%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.comp-header {
+  background: #000;
+  color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+.comp-header h1 {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+
+.comp-tagline {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  opacity: 0.9;
 }
 
 /* Stats */
 .comp-stats {
-  padding: 30px 40px;
+  padding: 25px;
   background: white;
+  flex: 1;
 }
 
 .comp-stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px 30px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 .comp-stat {
@@ -139,20 +160,20 @@
 .comp-contact {
   background: #000;
   color: white;
-  padding: 20px;
+  padding: 18px;
   text-align: center;
 }
 
 .comp-contact-item {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.5px;
-  margin: 5px 0;
+  margin: 3px 0;
 }
 
 /* Print styles */
 @media print {
   @page {
-    size: 5.5in 8.5in;
+    size: 8.5in 5.5in landscape;
     margin: 0;
   }
 
@@ -181,8 +202,8 @@
     padding: 0;
     margin: 0;
     overflow: hidden;
-    width: 5.5in;
-    height: 8.5in;
+    width: 8.5in;
+    height: 5.5in;
   }
 
   .no-print {
@@ -193,69 +214,55 @@
     min-height: auto;
     padding: 0;
     margin: 0;
-    height: 8.5in;
+    height: 5.5in;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
   }
 
   .comp-card {
     box-shadow: none;
     page-break-after: auto;
     page-break-inside: avoid;
-    width: 5.5in;
-    max-height: 8.5in;
+    width: 8.5in;
+    height: 5.5in;
     margin: 0;
     overflow: hidden;
   }
 
-  /* Ensure photos don't break across pages */
-  .comp-photo {
-    page-break-inside: avoid;
-  }
-
   .comp-header {
-    padding: 18px 20px;
+    padding: 20px;
   }
 
   .comp-header h1 {
-    font-size: 26px;
+    font-size: 28px;
     letter-spacing: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
 
   .comp-tagline {
-    font-size: 10px;
-  }
-
-  .comp-photo-large {
-    aspect-ratio: 16/9;
-    height: auto;
-  }
-
-  .comp-photo {
-    aspect-ratio: 3/4;
-    height: auto;
+    font-size: 11px;
   }
 
   .comp-stats {
-    padding: 15px 25px;
+    padding: 20px;
   }
 
   .comp-stats-grid {
-    gap: 8px 20px;
+    gap: 10px;
   }
 
   .comp-stat {
-    font-size: 9px;
-    padding-bottom: 3px;
+    font-size: 10px;
+    padding-bottom: 6px;
   }
 
   .comp-contact {
-    padding: 12px 20px;
+    padding: 15px;
   }
 
   .comp-contact-item {
     font-size: 9px;
-    margin: 3px 0;
+    margin: 2px 0;
   }
 }

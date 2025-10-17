@@ -16,9 +16,6 @@ const CompCard = () => {
         >
           VIEW & DOWNLOAD COMP CARD
         </Link>
-        <p className="text-sm text-gray-500 mt-4">
-          Opens dedicated page with download option
-        </p>
       </div>
     </section>
   );
