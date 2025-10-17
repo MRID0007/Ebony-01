@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ebony March - Comp Card</title>
+  <style>
+    @page {
+      size: 5.5in 8.5in;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .comp-card {
+      width: 5.5in;
+      height: 8.5in;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .header {
+      background: #000;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 300;
+      letter-spacing: 8px;
+      margin-bottom: 10px;
+    }
+
+    .header .tagline {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      opacity: 0.9;
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #000;
+    }
+
+    .photo {
+      background: #f0f0f0;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .photo.large {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    .stats {
+      padding: 30px;
+      background: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px 30px;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 11px;
+    }
+
+    .stat-label {
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stat-value {
+      color: #000;
+      font-weight: 500;
+    }
+
+    .contact {
+      background: #000;
+      color: white;
+      padding: 20px 30px;
+      text-align: center;
+    }
+
+    .contact-item {
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin: 5px 0;
+    }
+
+    .contact a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .comp-card {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="comp-card">
+    <div class="header">
+      <h1>EBONY MARCH</h1>
+      <div class="tagline">FASHION & EDITORIAL MODEL</div>
+    </div>
+
+    <div class="photos">
+      <div class="photo large">HERO PHOTO</div>
+      <div class="photo">PORTRAIT 1</div>
+      <div class="photo">PORTRAIT 2</div>
+    </div>
+
+    <div class="stats">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-label">Height</span>
+          <span class="stat-value">5'6" / 168 cm</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Bust</span>
+          <span class="stat-value">36" / 93 cm</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Waist</span>
+          <span class="stat-value">27" / 68 cm</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Hips</span>
+          <span class="stat-value">38" / 96 cm</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Shoes</span>
+          <span class="stat-value">38 EU</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Hair</span>
+          <span class="stat-value">Brown</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Eyes</span>
+          <span class="stat-value">Blue</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Location</span>
+          <span class="stat-value">Australia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="contact-item">
+        <a href="mailto:contact@ebonyash.fashion">contact@ebonyash.fashion</a>
+      </div>
+      <div class="contact-item">
+        <a href="https://ebonyash.fashion">ebonyash.fashion</a>
+      </div>
+      <div class="contact-item">
+        <a href="https://instagram.com/ebony.ash">@ebony.ash</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Auto-print functionality (optional)
+    // window.addEventListener('load', () => {
+    //   setTimeout(() => window.print(), 500);
+    // });
+  </script>
+</body>
+</html>
