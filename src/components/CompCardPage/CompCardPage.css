@@ -67,21 +67,21 @@
 .comp-header {
   background: #000;
   color: white;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
 }
 
 .comp-header h1 {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 300;
-  letter-spacing: 8px;
-  margin-bottom: 10px;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
 }
 
 .comp-tagline {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 300;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   opacity: 0.9;
 }
 
@@ -97,6 +97,7 @@
   background: #f0f0f0;
   aspect-ratio: 3/4;
   overflow: hidden;
+  max-height: 2in;
 }
 
 .comp-photo img {
@@ -108,32 +109,33 @@
 .comp-photo-large {
   grid-column: 1 / -1;
   aspect-ratio: 16/9;
+  max-height: 1.8in;
 }
 
 /* Stats */
 .comp-stats {
-  padding: 30px;
+  padding: 15px 20px;
   background: white;
 }
 
 .comp-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px 30px;
+  gap: 8px 20px;
 }
 
 .comp-stat {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #e0e0e0;
-  font-size: 11px;
+  font-size: 9px;
 }
 
 .comp-stat-label {
   color: #666;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .comp-stat-value {
@@ -145,14 +147,14 @@
 .comp-contact {
   background: #000;
   color: white;
-  padding: 20px 30px;
+  padding: 12px 20px;
   text-align: center;
 }
 
 .comp-contact-item {
-  font-size: 11px;
-  letter-spacing: 1px;
-  margin: 5px 0;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  margin: 3px 0;
 }
 
 /* Print styles */
@@ -172,8 +174,12 @@
     visibility: visible;
   }
 
-  body {
+  html, body {
     background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 8.5in !important;
+    overflow: hidden !important;
   }
 
   .comp-card-overlay {
@@ -182,7 +188,10 @@
     top: 0;
     background: white;
     padding: 0;
-    overflow: visible;
+    margin: 0;
+    overflow: hidden;
+    width: 5.5in;
+    height: 8.5in;
   }
 
   .no-print {
@@ -192,18 +201,68 @@
   .comp-card-container {
     min-height: auto;
     padding: 0;
+    margin: 0;
+    height: 8.5in;
+    display: flex;
+    align-items: flex-start;
   }
 
   .comp-card {
     box-shadow: none;
-    page-break-after: avoid;
+    page-break-after: auto;
     page-break-inside: avoid;
     width: 5.5in;
-    height: auto;
+    max-height: 8.5in;
+    margin: 0;
+    overflow: hidden;
   }
 
   /* Ensure photos don't break across pages */
   .comp-photo {
     page-break-inside: avoid;
+  }
+
+  .comp-header {
+    padding: 15px;
+  }
+
+  .comp-header h1 {
+    font-size: 24px;
+    letter-spacing: 5px;
+    margin-bottom: 6px;
+  }
+
+  .comp-tagline {
+    font-size: 10px;
+  }
+
+  .comp-photo-large {
+    max-height: 1.5in;
+  }
+
+  .comp-photo {
+    max-height: 1.8in;
+  }
+
+  .comp-stats {
+    padding: 12px 15px;
+  }
+
+  .comp-stats-grid {
+    gap: 6px 15px;
+  }
+
+  .comp-stat {
+    font-size: 8px;
+    padding-bottom: 4px;
+  }
+
+  .comp-contact {
+    padding: 10px 15px;
+  }
+
+  .comp-contact-item {
+    font-size: 8px;
+    margin: 2px 0;
   }
 }
