@@ -1,4 +1,4 @@
-const CompCard = () => {
+const CompCard = ({ onOpenCompCard }) => {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-4xl mx-auto text-center">
@@ -8,15 +8,14 @@ const CompCard = () => {
         <p className="text-gray-600 mb-6">
           Download my professional composite card for casting and booking reference
         </p>
-        <a
-          href="/comp-card.html"
-          target="_blank"
-          className="inline-block px-8 py-3 bg-black text-white font-light tracking-wider hover:bg-gray-800 transition-colors duration-300"
+        <button
+          onClick={onOpenCompCard}
+          className="inline-block px-8 py-3 bg-black text-white font-light tracking-wider hover:bg-gray-800 transition-colors duration-300 cursor-pointer border-none"
         >
-          VIEW COMP CARD
-        </a>
+          VIEW & DOWNLOAD COMP CARD
+        </button>
         <p className="text-sm text-gray-500 mt-4">
-          Open the comp card and use your browser's "Print to PDF" function to save
+          Opens in full-screen viewer with download option
         </p>
       </div>
     </section>

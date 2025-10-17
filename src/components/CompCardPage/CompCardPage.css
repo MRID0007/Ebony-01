@@ -1,0 +1,188 @@
+/* Overlay styles */
+.comp-card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.comp-card-controls {
+  max-width: 5.5in;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.close-btn,
+.download-btn {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.close-btn {
+  background: white;
+  color: black;
+}
+
+.close-btn:hover {
+  background: #e0e0e0;
+}
+
+.download-btn {
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.download-btn:hover {
+  background: #333;
+}
+
+/* Comp card container */
+.comp-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 80px);
+}
+
+.comp-card {
+  width: 5.5in;
+  background: white;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.comp-header {
+  background: #000;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.comp-header h1 {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
+}
+
+.comp-tagline {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  opacity: 0.9;
+}
+
+/* Photos */
+.comp-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #000;
+}
+
+.comp-photo {
+  background: #f0f0f0;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.comp-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comp-photo-large {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/9;
+}
+
+/* Stats */
+.comp-stats {
+  padding: 30px;
+  background: white;
+}
+
+.comp-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 30px;
+}
+
+.comp-stat {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 11px;
+}
+
+.comp-stat-label {
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.comp-stat-value {
+  color: #000;
+  font-weight: 500;
+}
+
+/* Contact */
+.comp-contact {
+  background: #000;
+  color: white;
+  padding: 20px 30px;
+  text-align: center;
+}
+
+.comp-contact-item {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+/* Print styles */
+@media print {
+  @page {
+    size: 5.5in 8.5in;
+    margin: 0;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  .comp-card-overlay {
+    position: static;
+    background: white;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .comp-card-container {
+    min-height: auto;
+  }
+
+  .comp-card {
+    box-shadow: none;
+    page-break-after: avoid;
+  }
+}
