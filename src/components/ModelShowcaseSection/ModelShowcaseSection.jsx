@@ -84,7 +84,7 @@ const ModelShowcaseSection = () => {
         {/* Philosophy Quote */}
         <div className="showcase-quote-section">
           <blockquote className="showcase-quote">
-            "I WANT TO GIVE EVERY PHOTO A STORY, A SLICE OF LIFE IN A SPLIT SECOND."
+            "I want to give every photo a story, a slice of life in a split second."
           </blockquote>
           <cite className="showcase-quote-author">— Ebony March</cite>
         </div>
@@ -136,7 +136,7 @@ const ModelShowcaseSection = () => {
 
         {/* About Section */}
         <div className="showcase-about">
-          <h3 className="about-title">about me</h3>
+          <h3 className="about-title">About Me</h3>
           <div className="about-content">
             <p>
               Modeling is an art form I deeply love. I used to think it was just about
