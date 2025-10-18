@@ -1,100 +1,70 @@
-import { useState } from 'react';
-// High-res images for modal
-import P01 from '../../assets/P-01.jpg';
-import P02 from '../../assets/P-02.jpg';
-import P03 from '../../assets/P-03.jpg';
-import P04 from '../../assets/P-04.jpg';
-import P05 from '../../assets/P-05.jpg';
-import P06 from '../../assets/P-06.jpg';
-import P07 from '../../assets/P-07.jpg';
-import P08 from '../../assets/P-08.jpg';
-// Optimized thumbnails for gallery grid
-import P01Thumb from '../../assets/thumbnails/P-01.jpg';
-import P02Thumb from '../../assets/thumbnails/P-02.jpg';
-import P03Thumb from '../../assets/thumbnails/P-03.jpg';
-import P04Thumb from '../../assets/thumbnails/P-04.jpg';
-import P05Thumb from '../../assets/thumbnails/P-05.jpg';
-import P06Thumb from '../../assets/thumbnails/P-06.jpg';
-import P07Thumb from '../../assets/thumbnails/P-07.jpg';
-import P08Thumb from '../../assets/thumbnails/P-08.jpg';
+import { useState, useEffect } from 'react';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState([]);
 
-  // Portfolio images
-  const images = [
-    {
-      id: 1,
-      src: P01,
-      thumb: P01Thumb,
-      alt: 'Ebony March fashion modeling portrait - professional editorial shoot',
-    },
-    {
-      id: 2,
-      src: P02,
-      thumb: P02Thumb,
-      alt: 'Ebony March high fashion photography - runway and editorial work',
-    },
-    {
-      id: 3,
-      src: P03,
-      thumb: P03Thumb,
-      alt: 'Ebony March commercial modeling photo - brand campaign shoot',
-    },
-    {
-      id: 4,
-      src: P04,
-      thumb: P04Thumb,
-      alt: 'Ebony March editorial fashion shoot - minimalist style photography',
-    },
-    {
-      id: 5,
-      src: P05,
-      thumb: P05Thumb,
-      alt: 'Ebony March professional modeling portfolio - fashion photography',
-    },
-    {
-      id: 6,
-      src: P06,
-      thumb: P06Thumb,
-      alt: 'Ebony March fashion model - contemporary editorial work',
-    },
-    {
-      id: 7,
-      src: P07,
-      thumb: P07Thumb,
-      alt: 'Ebony March modeling portfolio - high fashion editorial shoot',
-    },
-    {
-      id: 8,
-      src: P08,
-      thumb: P08Thumb,
-      alt: 'Ebony March professional fashion photography - modeling portfolio',
-    },
-  ];
+  useEffect(() => {
+    // Load high-res images
+    const highResModules = import.meta.glob('../../assets/P-*.{jpg,jpeg}', { eager: true });
+
+    // Load thumbnails
+    const thumbnailModules = import.meta.glob('../../assets/thumbnails/P-*.{jpg,jpeg}', { eager: true });
+
+    const loadedImages = Object.entries(highResModules)
+      .map(([path, module]) => {
+        const filename = path.split('/').pop();
+        const match = filename.match(/P-(\d+)\.(jpg|jpeg)/);
+        if (match) {
+          const number = parseInt(match[1], 10);
+          const ext = match[2];
+
+          // Find corresponding thumbnail
+          const thumbPath = `../../assets/thumbnails/P-${String(number).padStart(2, '0')}.${ext}`;
+          const thumbModule = thumbnailModules[thumbPath];
+
+          return {
+            id: number,
+            src: module.default, // High-res for modal
+            thumb: thumbModule ? thumbModule.default : module.default, // Thumbnail for grid, fallback to high-res
+            alt: `Ebony March professional fashion modeling portfolio photo ${number}`
+          };
+        }
+        return null;
+      })
+      .filter(img => img !== null)
+      .sort((a, b) => a.id - b.id);
+
+    setImages(loadedImages);
+  }, []);
 
   return (
     <section id="portfolio" className="min-h-screen bg-black py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         <h2 className="text-4xl md:text-5xl font-light text-white text-center mb-12 tracking-widest">
           FASHION MODEL PORTFOLIO
         </h2>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Masonry Gallery - Justified Layout with Equal Heights */}
+        <div className="flex flex-wrap gap-0">
           {images.map((image) => (
             <div
               key={image.id}
-              className="group relative aspect-[3/4] overflow-hidden cursor-pointer"
+              className="group relative overflow-hidden cursor-pointer flex-grow flex-shrink-0"
+              style={{
+                height: '250px',
+                flexBasis: '250px',
+                minWidth: '150px',
+                maxWidth: '400px'
+              }}
               onClick={() => setSelectedImage(image)}
             >
               <img
                 src={image.thumb}
                 alt={image.alt}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-75"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
             </div>
           ))}
         </div>

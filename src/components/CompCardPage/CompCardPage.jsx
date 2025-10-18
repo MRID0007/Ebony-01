@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import P09 from '../../assets/P-09.jpg';
+import HERO from '../../assets/HERO.jpg';
 import P08 from '../../assets/P-08.jpg';
 import P01 from '../../assets/P-01.jpg';
 import './CompCardPage.css';
@@ -30,7 +30,7 @@ const CompCardPage = () => {
                 <img src={P01} alt="Ebony March Portfolio" />
               </div>
               <div className="comp-photo">
-                <img src={P09} alt="Ebony March" />
+                <img src={HERO} alt="Ebony March" />
               </div>
               <div className="comp-photo">
                 <img src={P08} alt="Ebony March" />
