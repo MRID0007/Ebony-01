@@ -45,17 +45,15 @@ const Gallery = () => {
           FASHION MODEL PORTFOLIO
         </h2>
 
-        {/* Masonry Gallery - Justified Layout with Equal Heights */}
+        {/* Masonry Gallery - Justified Layout with Equal Heights, Preserved Aspect Ratios */}
         <div className="flex flex-wrap gap-0">
           {images.map((image) => (
             <div
               key={image.id}
-              className="group relative overflow-hidden cursor-pointer flex-grow flex-shrink-0"
+              className="group relative overflow-hidden cursor-pointer flex-grow"
               style={{
-                height: '250px',
-                flexBasis: '250px',
-                minWidth: '150px',
-                maxWidth: '400px'
+                height: '300px',
+                flexBasis: '200px'
               }}
               onClick={() => setSelectedImage(image)}
             >
@@ -63,7 +61,7 @@ const Gallery = () => {
                 src={image.thumb}
                 alt={image.alt}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-75"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-75"
               />
             </div>
           ))}
