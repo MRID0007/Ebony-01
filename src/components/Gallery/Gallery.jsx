@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
-const Gallery = () => {
+const Gallery = ({ limit = 20 }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [images, setImages] = useState([]);
   const [justifiedRows, setJustifiedRows] = useState([]);
@@ -37,8 +38,11 @@ const Gallery = () => {
       .filter(img => img !== null)
       .sort((a, b) => a.id - b.id);
 
-    setImages(loadedImages);
-  }, []);
+    // Apply limit if specified
+    const finalImages = limit ? loadedImages.slice(0, limit) : loadedImages;
+
+    setImages(finalImages);
+  }, [limit]);
 
   // Load images and calculate aspect ratios
   useEffect(() => {
@@ -138,6 +142,18 @@ const Gallery = () => {
             );
           })}
         </div>
+
+        {/* View More Button */}
+        {limit && (
+          <div className="text-center mt-12">
+            <Link
+              to="/full-gallery"
+              className="inline-block px-8 py-3 bg-white text-black font-light tracking-wider hover:bg-gray-200 transition-colors duration-300"
+            >
+              VIEW MORE
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Modal */}
