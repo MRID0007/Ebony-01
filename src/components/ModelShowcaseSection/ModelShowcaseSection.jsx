@@ -1,0 +1,24 @@
+import { Link } from 'react-router-dom';
+
+const ModelShowcaseSection = () => {
+  return (
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-4xl mx-auto text-center">
+        <h3 className="text-2xl md:text-3xl font-light text-black tracking-widest mb-4">
+          MODEL SHOWCASE
+        </h3>
+        <p className="text-gray-600 mb-6">
+          Explore my comprehensive modeling portfolio and professional work
+        </p>
+        <Link
+          to="/model-showcase"
+          className="inline-block px-8 py-3 bg-black text-white font-light tracking-wider hover:bg-gray-800 transition-colors duration-300 cursor-pointer border-none"
+        >
+          VIEW MODEL SHOWCASE
+        </Link>
+      </div>
+    </section>
+  );
+};
+
+export default ModelShowcaseSection;

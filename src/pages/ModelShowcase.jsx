@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import compCardPDF from '../../assets/files/compCard.pdf';
-import './CompCardPage.css';
+import showcasePDF from '../assets/files/modelShowcase.pdf';
+import '../components/CompCardPage/CompCardPage.css';
 
-const CompCardPage = () => {
+const ModelShowcase = () => {
   const navigate = useNavigate();
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = compCardPDF;
-    link.download = 'Ebony_March_CompCard.pdf';
+    link.href = showcasePDF;
+    link.download = 'Ebony_March_Model_Showcase.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -27,13 +27,13 @@ const CompCardPage = () => {
 
       <div className="comp-card-container">
         <iframe
-          src={compCardPDF}
+          src={showcasePDF}
           className="comp-card-pdf"
-          title="Ebony March Comp Card"
+          title="Ebony March Model Showcase"
         />
       </div>
     </div>
   );
 };
 
-export default CompCardPage;
+export default ModelShowcase;

@@ -4,6 +4,7 @@ import Gallery from '../components/Gallery/Gallery';
 import About from '../components/About/About';
 import Testimonials from '../components/Testimonials/Testimonials';
 import CompCard from '../components/CompCard/CompCard';
+import ModelShowcaseSection from '../components/ModelShowcaseSection/ModelShowcaseSection';
 import Contact from '../components/Contact/Contact';
 
 function Home() {
@@ -15,6 +16,7 @@ function Home() {
       <About />
       <Testimonials />
       <CompCard />
+      <ModelShowcaseSection />
       <Contact />
     </>
   );
