@@ -9,8 +9,8 @@ const showcaseProjects = [
     photographer: 'Arvin Coloma',
     date: 'May 2025',
     images: [
-      { src: '/assets/P-01.jpg', alt: 'Editorial work' },
-      { src: '/assets/P-08.jpg', alt: 'Editorial work' }
+      { src: '/assets/P-27.jpg', alt: 'Arvin Coloma editorial work' },
+      { src: '/assets/P-29.jpg', alt: 'Arvin Coloma editorial work' }
     ]
   },
   {
@@ -20,17 +20,36 @@ const showcaseProjects = [
     date: 'October 2025',
     images: [
       { src: '/assets/P-44.jpg', alt: 'Melbourne Fashion Week' },
-      { src: '/assets/P-45.jpg', alt: 'Melbourne Fashion Week' }
+      { src: '/assets/P-45.jpg', alt: 'Melbourne Fashion Week' },
+      { src: '/assets/P-46.jpg', alt: 'Melbourne Fashion Week' },
+      { src: '/assets/P-47.jpg', alt: 'Melbourne Fashion Week' }
     ]
   },
   {
     id: '03',
-    title: 'Commercial Work',
-    photographer: '33Animewear',
+    title: '33Animewear',
+    subtitle: 'Winter/Spring Collection',
     date: 'August 2025',
     images: [
-      { src: '/assets/P-27.jpg', alt: '33Animewear collection' },
-      { src: '/assets/P-26.jpg', alt: '33Animewear collection' }
+      { src: '/assets/P-42.jpg', alt: '33Animewear collection' }
+    ]
+  },
+  {
+    id: '04',
+    title: "L'Oreal Colour and Style Trophy",
+    photographer: 'Styled by Nikki Reponia',
+    date: 'July 2025',
+    images: [
+      { src: '/assets/P-21.jpg', alt: "L'Oreal Colour and Style Trophy" }
+    ]
+  },
+  {
+    id: '05',
+    title: 'Arnel Arce Photography',
+    date: 'January 2025',
+    images: [
+      { src: '/assets/P-23.jpg', alt: 'Arnel Arce photography' },
+      { src: '/assets/P-10.jpg', alt: 'Arnel Arce photography' }
     ]
   }
 ];
