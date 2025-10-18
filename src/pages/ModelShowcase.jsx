@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import showcasePDF from '../assets/files/modelShowcase.pdf';
 import '../components/CompCardPage/CompCardPage.css';
 
 const ModelShowcase = () => {
   const navigate = useNavigate();
+  const showcasePDF = '/files/modelShowcase.pdf';
 
   const handleDownload = () => {
     const link = document.createElement('a');
