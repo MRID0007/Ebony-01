@@ -1,56 +1,65 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './ModelShowcaseSection.css';
 
-// Import showcase images from the portfolio
+// Load high-res images and thumbnails
+const highResModules = import.meta.glob('../../assets/P-*.{jpg,jpeg}', { eager: true });
+const thumbnailModules = import.meta.glob('../../assets/thumbnails/P-*.{jpg,jpeg}', { eager: true });
+
+// Helper function to get image URLs
+const getImageUrls = (imageNumber) => {
+  const paddedNumber = String(imageNumber).padStart(2, '0');
+
+  // Find high-res image
+  const highResKey = Object.keys(highResModules).find(key =>
+    key.includes(`P-${paddedNumber}.jpg`) || key.includes(`P-${paddedNumber}.jpeg`)
+  );
+
+  // Find thumbnail
+  const thumbKey = Object.keys(thumbnailModules).find(key =>
+    key.includes(`P-${paddedNumber}.jpg`) || key.includes(`P-${paddedNumber}.jpeg`)
+  );
+
+  return {
+    src: highResKey ? highResModules[highResKey].default : null,
+    thumb: thumbKey ? thumbnailModules[thumbKey].default : (highResKey ? highResModules[highResKey].default : null)
+  };
+};
+
+// Define showcase projects with image numbers
 const showcaseProjects = [
   {
     id: '01',
     title: 'Editorial Showcase',
     photographer: 'Arvin Coloma',
     date: 'May 2025',
-    images: [
-      { src: '/assets/P-27.jpg', alt: 'Arvin Coloma editorial work' },
-      { src: '/assets/P-29.jpg', alt: 'Arvin Coloma editorial work' }
-    ]
+    imageNumbers: [27, 29]
   },
   {
     id: '02',
     title: 'Melbourne Fashion Week',
     subtitle: "Maker's Lane Showcase",
     date: 'October 2025',
-    images: [
-      { src: '/assets/P-44.jpg', alt: 'Melbourne Fashion Week' },
-      { src: '/assets/P-45.jpg', alt: 'Melbourne Fashion Week' },
-      { src: '/assets/P-46.jpg', alt: 'Melbourne Fashion Week' },
-      { src: '/assets/P-47.jpg', alt: 'Melbourne Fashion Week' }
-    ]
+    imageNumbers: [44, 45, 46, 47]
   },
   {
     id: '03',
     title: '33Animewear',
     subtitle: 'Winter/Spring Collection',
     date: 'August 2025',
-    images: [
-      { src: '/assets/P-42.jpg', alt: '33Animewear collection' }
-    ]
+    imageNumbers: [42]
   },
   {
     id: '04',
     title: "L'Oreal Colour and Style Trophy",
     photographer: 'Styled by Nikki Reponia',
     date: 'July 2025',
-    images: [
-      { src: '/assets/P-21.jpg', alt: "L'Oreal Colour and Style Trophy" }
-    ]
+    imageNumbers: [21]
   },
   {
     id: '05',
     title: 'Arnel Arce Photography',
     date: 'January 2025',
-    images: [
-      { src: '/assets/P-23.jpg', alt: 'Arnel Arce photography' },
-      { src: '/assets/P-10.jpg', alt: 'Arnel Arce photography' }
-    ]
+    imageNumbers: [23, 10]
   }
 ];
 
@@ -82,46 +91,51 @@ const ModelShowcaseSection = () => {
 
         {/* Projects Grid */}
         <div className="showcase-projects">
-          {showcaseProjects.map((project) => (
-            <div key={project.id} className="showcase-project">
-              <div className="project-number">{project.id}</div>
+          {showcaseProjects.map((project) => {
+            // Load images for this project
+            const projectImages = project.imageNumbers.map(num => ({
+              ...getImageUrls(num),
+              alt: `${project.title} - Photo ${num}`
+            }));
 
-              <div className="project-images">
-                {project.images.map((image, idx) => (
-                  <div
-                    key={idx}
-                    className="project-image-wrapper"
-                    onClick={() => setSelectedProject({ ...project, imageIndex: idx })}
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="project-image"
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
-              </div>
+            return (
+              <div key={project.id} className="showcase-project">
+                <div className="project-images">
+                  {projectImages.map((image, idx) => (
+                    <div
+                      key={idx}
+                      className="project-image-wrapper"
+                      onClick={() => setSelectedProject({ images: projectImages, imageIndex: idx })}
+                    >
+                      <img
+                        src={image.thumb}
+                        alt={image.alt}
+                        className="project-image"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
 
-              <div className="project-info">
-                <h3 className="project-title">{project.title}</h3>
-                {project.subtitle && (
-                  <p className="project-subtitle">{project.subtitle}</p>
-                )}
-                <div className="project-meta">
-                  {project.photographer && (
-                    <span className="project-photographer">{project.photographer}</span>
+                <div className="project-info">
+                  <h3 className="project-title">{project.title}</h3>
+                  {project.subtitle && (
+                    <p className="project-subtitle">{project.subtitle}</p>
                   )}
-                  <span className="project-date">{project.date}</span>
+                  <div className="project-meta">
+                    {project.photographer && (
+                      <span className="project-photographer">{project.photographer}</span>
+                    )}
+                    <span className="project-date">{project.date}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* About Section */}
         <div className="showcase-about">
-          <div className="about-number">01</div>
           <h3 className="about-title">about me</h3>
           <div className="about-content">
             <p>
@@ -138,7 +152,7 @@ const ModelShowcaseSection = () => {
       </div>
 
       {/* Modal for full-size images */}
-      {selectedProject && (
+      {selectedProject && selectedProject.images && selectedProject.images[selectedProject.imageIndex] && (
         <div
           className="showcase-modal"
           onClick={() => setSelectedProject(null)}
