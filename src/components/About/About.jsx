@@ -20,25 +20,17 @@ const About = () => {
           {/* Content */}
           <div className="order-1 lg:order-2 space-y-6">
             <h2 className="text-4xl md:text-5xl font-light text-black tracking-widest">
-              ABOUT EBONY - PROFESSIONAL MODEL
+              ABOUT ME
             </h2>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                I'm a professional fashion and editorial model with a passion for bringing
-                creative visions to life. With years of experience in the modeling industry, I've had
-                the privilege of working with talented photographers, designers, and brands across
-                Australia and internationally.
+                I am a model who specialises in editorial and commercial shoots. I enjoy a focus on shape and emotion through posing, and love experimenting with lighting to bring life to photos.
               </p>
               <p>
-                My approach to modeling is rooted in versatility and professionalism. Whether
-                it's high fashion runway shows, commercial brand campaigns, or editorial photo shoots,
-                I bring dedication, creativity, and authenticity to every project. I specialize in
-                bringing the designer's vision to life while adding my own unique energy to each shot.
+                Modeling is an art form I deeply love. I used to think it was just about being in front of the camera, but it's also about you: your body, how you present yourself, and whom you identify with.
               </p>
               <p>
-                Based in Australia, I'm available for fashion modeling assignments, editorial work,
-                commercial campaigns, and creative collaborations worldwide. My experience spans
-                runway modeling, print campaigns, digital content creation, and brand partnerships.
+                Under different lights, lenses and creative direction, modeling gives me a chance to become a different person, one shutter click at a time.
               </p>
             </div>
 

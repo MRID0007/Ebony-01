@@ -58,8 +58,11 @@ const Gallery = ({ limit }) => {
       .sort((a, b) => a.id - b.id);
 
     // Apply limit: use prop if specified, otherwise use responsive limit
-    const activeLimit = limit !== undefined && limit !== null ? limit : responsiveLimit;
-    const finalImages = activeLimit ? loadedImages.slice(0, activeLimit) : loadedImages;
+    // If limit is undefined, use responsiveLimit
+    // If limit is null, show all images
+    // If limit is a number, use that number
+    const activeLimit = limit !== undefined ? limit : responsiveLimit;
+    const finalImages = activeLimit !== null && activeLimit !== false ? loadedImages.slice(0, activeLimit) : loadedImages;
 
     setImages(finalImages);
   }, [limit, responsiveLimit]);
@@ -163,8 +166,8 @@ const Gallery = ({ limit }) => {
           })}
         </div>
 
-        {/* View More Button */}
-        {(limit !== undefined && limit !== null ? limit : responsiveLimit) && (
+        {/* View More Button - only show when there's a limit applied */}
+        {(limit !== undefined ? limit : responsiveLimit) !== null && (
           <div className="text-center mt-12">
             <Link
               to="/full-gallery"
