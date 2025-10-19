@@ -1,11 +1,30 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const Gallery = ({ limit = 20 }) => {
+const Gallery = ({ limit }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [images, setImages] = useState([]);
   const [justifiedRows, setJustifiedRows] = useState([]);
+  const [responsiveLimit, setResponsiveLimit] = useState(20);
   const containerRef = useRef(null);
+
+  // Update responsive limit based on screen size
+  useEffect(() => {
+    const updateLimit = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setResponsiveLimit(8); // Mobile
+      } else if (width < 1024) {
+        setResponsiveLimit(12); // Tablet
+      } else {
+        setResponsiveLimit(20); // Desktop
+      }
+    };
+
+    updateLimit();
+    window.addEventListener('resize', updateLimit);
+    return () => window.removeEventListener('resize', updateLimit);
+  }, []);
 
   useEffect(() => {
     // Load high-res images
@@ -38,11 +57,12 @@ const Gallery = ({ limit = 20 }) => {
       .filter(img => img !== null)
       .sort((a, b) => a.id - b.id);
 
-    // Apply limit if specified
-    const finalImages = limit ? loadedImages.slice(0, limit) : loadedImages;
+    // Apply limit: use prop if specified, otherwise use responsive limit
+    const activeLimit = limit !== undefined && limit !== null ? limit : responsiveLimit;
+    const finalImages = activeLimit ? loadedImages.slice(0, activeLimit) : loadedImages;
 
     setImages(finalImages);
-  }, [limit]);
+  }, [limit, responsiveLimit]);
 
   // Load images and calculate aspect ratios
   useEffect(() => {
@@ -144,7 +164,7 @@ const Gallery = ({ limit = 20 }) => {
         </div>
 
         {/* View More Button */}
-        {limit && (
+        {(limit !== undefined && limit !== null ? limit : responsiveLimit) && (
           <div className="text-center mt-12">
             <Link
               to="/full-gallery"
