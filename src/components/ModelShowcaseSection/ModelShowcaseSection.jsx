@@ -133,30 +133,6 @@ const ModelShowcaseSection = () => {
             );
           })}
         </div>
-
-        {/* About Section */}
-        <div className="showcase-about">
-          <h3 className="about-title">About Me</h3>
-          <div className="about-content">
-            <p>
-              I'm a professional fashion and editorial model with a passion for bringing
-              creative visions to life. With years of experience in the modeling industry, I've had
-              the privilege of working with talented photographers, designers, and brands across
-              Australia and internationally.
-            </p>
-            <p>
-              My approach to modeling is rooted in versatility and professionalism. Whether
-              it's high fashion runway shows, commercial brand campaigns, or editorial photo shoots,
-              I bring dedication, creativity, and authenticity to every project. I specialize in
-              bringing the designer's vision to life while adding my own unique energy to each shot.
-            </p>
-            <p>
-              Based in Australia, I'm available for fashion modeling assignments, editorial work,
-              commercial campaigns, and creative collaborations worldwide. My experience spans
-              runway modeling, print campaigns, digital content creation, and brand partnerships.
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* Modal for full-size images */}
