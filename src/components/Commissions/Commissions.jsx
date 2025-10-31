@@ -34,56 +34,46 @@ const Commissions = () => {
     {
       title: 'Fashion Modeling',
       description: 'Professional fashion shoots for brands and designers',
-      price: 'Starting at $200/hour',
-      icon: '👗'
+      price: 'Starting at $200/hour'
     },
     {
       title: 'Cosplay Photography',
       description: 'Character photoshoots and convention appearances',
-      price: 'Starting at $150/hour',
-      icon: '🎭'
+      price: 'Starting at $150/hour'
     },
     {
       title: 'Editorial Work',
       description: 'Magazine features and editorial spreads',
-      price: 'Custom pricing',
-      icon: '📸'
+      price: 'Custom pricing'
     },
     {
       title: 'Brand Collaborations',
       description: 'Social media content and brand partnerships',
-      price: 'Custom pricing',
-      icon: '✨'
+      price: 'Custom pricing'
     }
   ];
 
   return (
-    <section id="commissions" className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-20 px-4 sm:px-6 lg:px-8">
+    <section id="commissions" className="min-h-screen bg-black py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-light text-white text-center mb-4 tracking-widest">
+        <h2 className="text-4xl md:text-5xl font-light text-white text-center mb-16 tracking-widest">
           COMMISSIONS
         </h2>
-        <p className="text-center text-gray-400 mb-16 text-lg tracking-wide">
-          Professional modeling services and collaborations
-        </p>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-gray-800/50 backdrop-blur-sm p-8 border border-gray-700 hover:border-white transition-all duration-300 group"
+              className="bg-white/5 p-8 border border-white/10 hover:border-white/30 transition-all duration-300"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
               <h3 className="text-2xl font-light text-white mb-3 tracking-wider">
                 {service.title}
               </h3>
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 mb-4 font-light">
                 {service.description}
               </p>
-              <p className="text-white font-light tracking-wide">
+              <p className="text-white font-light tracking-wide text-sm">
                 {service.price}
               </p>
             </div>
@@ -91,7 +81,7 @@ const Commissions = () => {
         </div>
 
         {/* Commission Request Form */}
-        <div className="bg-gray-800/30 backdrop-blur-sm p-8 md:p-12 border border-gray-700">
+        <div className="bg-white/5 p-8 md:p-12 border border-white/10">
           <h3 className="text-3xl font-light text-white mb-8 text-center tracking-wider">
             REQUEST A COMMISSION
           </h3>
@@ -99,7 +89,7 @@ const Commissions = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-gray-300 mb-2 tracking-wide">
+                <label htmlFor="name" className="block text-white/70 mb-2 tracking-wide font-light text-sm">
                   Name *
                 </label>
                 <input
@@ -109,12 +99,12 @@ const Commissions = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-gray-900/50 border border-gray-600 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300"
+                  className="w-full bg-black/50 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300 font-light"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-gray-300 mb-2 tracking-wide">
+                <label htmlFor="email" className="block text-white/70 mb-2 tracking-wide font-light text-sm">
                   Email *
                 </label>
                 <input
@@ -124,14 +114,14 @@ const Commissions = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-gray-900/50 border border-gray-600 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300"
+                  className="w-full bg-black/50 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300 font-light"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="projectType" className="block text-gray-300 mb-2 tracking-wide">
+                <label htmlFor="projectType" className="block text-white/70 mb-2 tracking-wide font-light text-sm">
                   Project Type *
                 </label>
                 <select
@@ -140,7 +130,7 @@ const Commissions = () => {
                   value={formData.projectType}
                   onChange={handleChange}
                   required
-                  className="w-full bg-gray-900/50 border border-gray-600 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300"
+                  className="w-full bg-black/50 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300 font-light"
                 >
                   <option value="">Select a service</option>
                   <option value="fashion">Fashion Modeling</option>
@@ -152,7 +142,7 @@ const Commissions = () => {
               </div>
 
               <div>
-                <label htmlFor="budget" className="block text-gray-300 mb-2 tracking-wide">
+                <label htmlFor="budget" className="block text-white/70 mb-2 tracking-wide font-light text-sm">
                   Budget Range
                 </label>
                 <select
@@ -160,7 +150,7 @@ const Commissions = () => {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full bg-gray-900/50 border border-gray-600 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300"
+                  className="w-full bg-black/50 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300 font-light"
                 >
                   <option value="">Select budget range</option>
                   <option value="under-500">Under $500</option>
@@ -173,7 +163,7 @@ const Commissions = () => {
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-gray-300 mb-2 tracking-wide">
+              <label htmlFor="description" className="block text-white/70 mb-2 tracking-wide font-light text-sm">
                 Project Description *
               </label>
               <textarea
@@ -184,7 +174,7 @@ const Commissions = () => {
                 required
                 rows="6"
                 placeholder="Tell me about your project, timeline, and any specific requirements..."
-                className="w-full bg-gray-900/50 border border-gray-600 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300 resize-none"
+                className="w-full bg-black/50 border border-white/20 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors duration-300 resize-none font-light placeholder:text-white/30"
               ></textarea>
             </div>
 
@@ -200,12 +190,9 @@ const Commissions = () => {
         </div>
 
         {/* Additional Info */}
-        <div className="mt-12 text-center text-gray-400">
-          <p className="text-sm tracking-wide">
+        <div className="mt-12 text-center text-white/60">
+          <p className="text-sm tracking-wide font-light">
             Response time: Within 2-3 business days
-          </p>
-          <p className="text-sm tracking-wide mt-2">
-            For urgent inquiries, please use the contact section below
           </p>
         </div>
       </div>

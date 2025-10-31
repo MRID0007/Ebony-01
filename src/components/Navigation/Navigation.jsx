@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,12 +16,12 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Cosplay', href: '#cosplay' },
-    { name: 'Commissions', href: '#commissions' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', route: '/' },
+    { name: 'Portfolio', href: '#portfolio', route: '/' },
+    { name: 'Cosplay', href: '/cosplay', route: '/cosplay' },
+    { name: 'Commissions', href: '/commissions', route: '/commissions' },
+    { name: 'About', href: '#about', route: '/' },
+    { name: 'Contact', href: '#contact', route: '/' },
   ];
 
   const scrollToSection = (e, href) => {
@@ -28,6 +30,20 @@ const Navigation = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
+    }
+  };
+
+  const handleNavClick = (e, link) => {
+    if (link.route === '/cosplay' || link.route === '/commissions') {
+      setIsOpen(false);
+      return; // Let Link handle the navigation
+    }
+
+    if (location.pathname !== '/') {
+      // If not on home page, navigate to home first
+      window.location.href = '/' + link.href;
+    } else {
+      scrollToSection(e, link.href);
     }
   };
 
@@ -47,14 +63,24 @@ const Navigation = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-white hover:text-gray-300 transition-colors duration-300 text-sm tracking-wider"
-              >
-                {link.name}
-              </a>
+              link.route === '/cosplay' || link.route === '/commissions' ? (
+                <Link
+                  key={link.name}
+                  to={link.route}
+                  className="text-white hover:text-gray-300 transition-colors duration-300 text-sm tracking-wider"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className="text-white hover:text-gray-300 transition-colors duration-300 text-sm tracking-wider"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </div>
 
@@ -91,14 +117,25 @@ const Navigation = () => {
         >
           <div className="flex flex-col space-y-4 py-4">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-white hover:text-gray-300 transition-colors duration-300 text-sm tracking-wider"
-              >
-                {link.name}
-              </a>
+              link.route === '/cosplay' || link.route === '/commissions' ? (
+                <Link
+                  key={link.name}
+                  to={link.route}
+                  onClick={() => setIsOpen(false)}
+                  className="text-white hover:text-gray-300 transition-colors duration-300 text-sm tracking-wider"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className="text-white hover:text-gray-300 transition-colors duration-300 text-sm tracking-wider"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </div>
         </div>

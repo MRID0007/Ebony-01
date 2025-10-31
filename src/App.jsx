@@ -3,6 +3,8 @@ import Home from './pages/Home';
 import CompCardPage from './components/CompCardPage/CompCardPage';
 import FullGallery from './pages/FullGallery';
 import ModelShowcase from './pages/ModelShowcase';
+import CosplayPage from './pages/CosplayPage';
+import CommissionsPage from './pages/CommissionsPage';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path="/comp-card" element={<CompCardPage />} />
         <Route path="/full-gallery" element={<FullGallery />} />
         <Route path="/model-showcase" element={<ModelShowcase />} />
+        <Route path="/cosplay" element={<CosplayPage />} />
+        <Route path="/commissions" element={<CommissionsPage />} />
       </Routes>
     </Router>
   );

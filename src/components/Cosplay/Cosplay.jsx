@@ -127,14 +127,11 @@ const Cosplay = ({ limit }) => {
   }, [images]);
 
   return (
-    <section id="cosplay" className="min-h-screen bg-gradient-to-b from-black to-gray-900 py-20 px-4 sm:px-6 lg:px-8">
+    <section id="cosplay" className="min-h-screen bg-black py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-full mx-auto">
-        <h2 className="text-4xl md:text-5xl font-light text-white text-center mb-4 tracking-widest">
-          COSPLAY
+        <h2 className="text-4xl md:text-5xl font-light text-white text-center mb-12 tracking-widest">
+          COSPLAY PORTFOLIO
         </h2>
-        <p className="text-center text-gray-400 mb-12 text-lg tracking-wide">
-          Character transformations and creative costume design
-        </p>
 
         {images.length === 0 ? (
           <div className="text-center text-gray-500 py-20">
