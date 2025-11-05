@@ -35,23 +35,23 @@ const About = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8">
+            <div className="grid grid-cols-3 gap-8 pt-8" role="region" aria-label="Professional statistics">
               <div className="text-center">
-                <div className="text-3xl font-light text-black">3+</div>
+                <div className="text-3xl font-light text-black" aria-label="3 plus years of experience">3+</div>
                 <div className="text-sm text-gray-600 tracking-wider">YEARS</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-black">100+</div>
+                <div className="text-3xl font-light text-black" aria-label="100 plus shoots">100+</div>
                 <div className="text-sm text-gray-600 tracking-wider">SHOOTS</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-black">50+</div>
+                <div className="text-3xl font-light text-black" aria-label="50 plus clients">50+</div>
                 <div className="text-sm text-gray-600 tracking-wider">CLIENTS</div>
               </div>
             </div>
 
             {/* Measurements */}
-            <div className="pt-8 space-y-2 text-sm text-gray-600">
+            <div className="pt-8 space-y-2 text-sm text-gray-600" role="region" aria-label="Model measurements">
               <div className="flex justify-between border-b border-gray-200 py-2">
                 <span>Height</span>
                 <span className="font-light">5'6" / 168 cm</span>
