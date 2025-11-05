@@ -1,4 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import PageTransition from './components/PageTransition/PageTransition';
 import Home from './pages/Home';
 import CompCardPage from './components/CompCardPage/CompCardPage';
 import FullGallery from './pages/FullGallery';
@@ -6,10 +9,24 @@ import ModelShowcase from './pages/ModelShowcase';
 import CosplayPage from './pages/CosplayPage';
 import CommissionsPage from './pages/CommissionsPage';
 
-function App() {
+// Component to handle scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
+// Wrapper component for routes with transitions
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Routes>
+    <PageTransition key={location.pathname}>
+      <Routes location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/comp-card" element={<CompCardPage />} />
         <Route path="/full-gallery" element={<FullGallery />} />
@@ -17,7 +34,22 @@ function App() {
         <Route path="/cosplay" element={<CosplayPage />} />
         <Route path="/commissions" element={<CommissionsPage />} />
       </Routes>
-    </Router>
+    </PageTransition>
+  );
+};
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <Router>
+        <ScrollToTop />
+        {/* Skip to content link for accessibility */}
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
+        <AnimatedRoutes />
+      </Router>
+    </ErrorBoundary>
   );
 }
 

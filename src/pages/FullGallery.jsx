@@ -7,11 +7,13 @@ function FullGallery() {
   return (
     <div className="min-h-screen bg-black">
       {/* Back Button */}
-      <div className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+      <div className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800" role="banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button
             onClick={() => navigate('/')}
-            className="inline-flex items-center px-6 py-2 bg-white text-black font-light tracking-wider hover:bg-gray-200 transition-colors duration-300"
+            className="inline-flex items-center px-6 py-2 bg-white text-black font-light tracking-wider hover:bg-gray-200 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+            style={{ minHeight: '44px', minWidth: '44px' }}
+            aria-label="Go back to portfolio home page"
           >
             ← Back to Portfolio
           </button>
@@ -19,7 +21,9 @@ function FullGallery() {
       </div>
 
       {/* Full Gallery - No Limit */}
-      <Gallery limit={null} />
+      <main>
+        <Gallery limit={null} />
+      </main>
     </div>
   );
 }
