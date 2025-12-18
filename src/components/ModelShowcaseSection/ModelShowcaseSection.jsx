@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './ModelShowcaseSection.css';
 
 // Load high-res images and thumbnails
-const highResModules = import.meta.glob('../../assets/P-*.{jpg,jpeg}', { eager: true });
+const highResModules = import.meta.glob('../../assets/images/P-*.{jpg,jpeg}', { eager: true });
 const thumbnailModules = import.meta.glob('../../assets/thumbnails/P-*.{jpg,jpeg}', { eager: true });
 
 // Helper function to get image URLs

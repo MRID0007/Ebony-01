@@ -28,7 +28,7 @@ const Gallery = ({ limit }) => {
 
   useEffect(() => {
     // Load high-res images
-    const highResModules = import.meta.glob('../../assets/P-*.{jpg,jpeg}', { eager: true });
+    const highResModules = import.meta.glob('../../assets/images/P-*.{jpg,jpeg}', { eager: true });
 
     // Load thumbnails
     const thumbnailModules = import.meta.glob('../../assets/thumbnails/P-*.{jpg,jpeg}', { eager: true });
