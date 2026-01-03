@@ -6,7 +6,18 @@ const Gallery = ({ limit }) => {
   const [images, setImages] = useState([]);
   const [justifiedRows, setJustifiedRows] = useState([]);
   const [responsiveLimit, setResponsiveLimit] = useState(20);
+  const [loadedThumbnails, setLoadedThumbnails] = useState({});
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
   const containerRef = useRef(null);
+
+  const handleThumbnailLoad = (imageId) => {
+    setLoadedThumbnails(prev => ({ ...prev, [imageId]: true }));
+  };
+
+  const handleImageClick = (image) => {
+    setModalImageLoaded(false);
+    setSelectedImage(image);
+  };
 
   // Update responsive limit based on screen size
   useEffect(() => {
@@ -150,13 +161,20 @@ const Gallery = ({ limit }) => {
                         width: `${widthPercentage}%`,
                         height: '100%'
                       }}
-                      onClick={() => setSelectedImage(image)}
+                      onClick={() => handleImageClick(image)}
                     >
+                      {/* Skeleton loader */}
+                      {!loadedThumbnails[image.id] && (
+                        <div className="absolute inset-0 skeleton-loader" />
+                      )}
                       <img
                         src={image.thumb}
                         alt={image.alt}
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-75"
+                        onLoad={() => handleThumbnailLoad(image.id)}
+                        className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-75 ${
+                          loadedThumbnails[image.id] ? 'opacity-100' : 'opacity-0'
+                        }`}
                       />
                     </div>
                   );
@@ -191,10 +209,26 @@ const Gallery = ({ limit }) => {
           >
             &times;
           </button>
+          {/* Modal skeleton loader */}
+          {!modalImageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center p-4">
+              <div
+                className="skeleton-loader rounded"
+                style={{
+                  width: 'min(90vw, 600px)',
+                  height: 'min(80vh, 800px)',
+                  aspectRatio: '3/4'
+                }}
+              />
+            </div>
+          )}
           <img
             src={selectedImage.src}
             alt={selectedImage.alt}
-            className="max-w-full max-h-full object-contain"
+            onLoad={() => setModalImageLoaded(true)}
+            className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${
+              modalImageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
             onClick={(e) => e.stopPropagation()}
           />
         </div>

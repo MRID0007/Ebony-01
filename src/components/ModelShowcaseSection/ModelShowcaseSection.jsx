@@ -65,6 +65,17 @@ const showcaseProjects = [
 
 const ModelShowcaseSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [loadedThumbnails, setLoadedThumbnails] = useState({});
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
+
+  const handleThumbnailLoad = (imageKey) => {
+    setLoadedThumbnails(prev => ({ ...prev, [imageKey]: true }));
+  };
+
+  const handleImageClick = (images, imageIndex) => {
+    setModalImageLoaded(false);
+    setSelectedProject({ images, imageIndex });
+  };
 
   return (
     <section className="model-showcase-section">
@@ -101,20 +112,29 @@ const ModelShowcaseSection = () => {
             return (
               <div key={project.id} className="showcase-project">
                 <div className="project-images">
-                  {projectImages.map((image, idx) => (
-                    <div
-                      key={idx}
-                      className="project-image-wrapper"
-                      onClick={() => setSelectedProject({ images: projectImages, imageIndex: idx })}
-                    >
-                      <img
-                        src={image.thumb}
-                        alt={image.alt}
-                        className="project-image"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
+                  {projectImages.map((image, idx) => {
+                    const imageKey = `${project.id}-${idx}`;
+                    return (
+                      <div
+                        key={idx}
+                        className="project-image-wrapper"
+                        onClick={() => handleImageClick(projectImages, idx)}
+                      >
+                        {/* Skeleton loader */}
+                        {!loadedThumbnails[imageKey] && (
+                          <div className="absolute inset-0 skeleton-loader-light" />
+                        )}
+                        <img
+                          src={image.thumb}
+                          alt={image.alt}
+                          className={`project-image ${loadedThumbnails[imageKey] ? 'opacity-100' : 'opacity-0'}`}
+                          loading="lazy"
+                          onLoad={() => handleThumbnailLoad(imageKey)}
+                          style={{ transition: 'opacity 0.3s ease' }}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="project-info">
@@ -144,10 +164,27 @@ const ModelShowcaseSection = () => {
           <button className="modal-close" onClick={() => setSelectedProject(null)}>
             &times;
           </button>
+          {/* Modal skeleton loader */}
+          {!modalImageLoaded && (
+            <div
+              className="skeleton-loader"
+              style={{
+                width: 'min(90vw, 500px)',
+                height: 'min(80vh, 700px)',
+                aspectRatio: '3/4',
+                borderRadius: '4px'
+              }}
+            />
+          )}
           <img
             src={selectedProject.images[selectedProject.imageIndex].src}
             alt={selectedProject.images[selectedProject.imageIndex].alt}
             className="modal-image"
+            onLoad={() => setModalImageLoaded(true)}
+            style={{
+              opacity: modalImageLoaded ? 1 : 0,
+              transition: 'opacity 0.3s ease'
+            }}
             onClick={(e) => e.stopPropagation()}
           />
         </div>
