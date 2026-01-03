@@ -151,7 +151,7 @@ const Contact = () => {
 
         {/* Footer */}
         <div className="text-center text-gray-500 text-sm mt-20 pt-8 border-t border-gray-800">
-          <p>&copy; 2025 Ebony March. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Ebony March. All rights reserved.</p>
           <p className="mt-2">
             <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
           </p>
